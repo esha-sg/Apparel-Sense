@@ -1,0 +1,65 @@
+{% extends "nav.html" %}
+{% block content %}
+<div class="registration-form">
+    <div class="container">
+        <div class="dreamcrub">
+            <ul class="breadcrumbs">
+                <li class="home">
+                    <a href="{{ url_for('home') }}" title="Go to Home Page">Home</a>&nbsp;
+                    <span>&gt;</span>
+                </li>
+                <li class="women">
+                    Registration
+                </li>
+            </ul>
+            <ul class="previous">
+                <li><a href="{{ url_for('home') }}">Back to Previous Page</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <h2>Registration</h2>
+        <div class="registration-grids">
+            <div class="reg-form">
+                <div class="reg">
+                    <p>Welcome, please enter the following details to continue.</p>
+                    <p>If you have previously registered with us, <a href="#">click here</a></p>
+                    <form>
+                        <ul>
+                            <li class="text-info">First Name:</li>
+                            <li><input type="text" value="" id='inputName' name='inputName' required></li>
+                        </ul>
+
+                        <ul>
+                            <li class="text-info">Username:</li>
+                            <li><input type="text" value="" id='inputEmail' name='inputEmail' required></li>
+                        </ul>
+                        <ul>
+                            <li class="text-info">Password:</li>
+                            <li><input type="password" value="" id='inputPassword' name='inputPassword' required></li>
+                        </ul>
+
+
+                        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button"
+                                style='background-color:#816263'>Sign up
+                        </button>
+                        <p class="click">By clicking this button, you are agree to my <a href="#">Policy Terms and
+                            Conditions.</a></p>
+                    </form>
+                </div>
+                <script src="/static/js/signUp.js"></script>
+            </div>
+            <div class="reg-right">
+                <h3>Completely Free Account</h3>
+                <div class="strip"></div>
+                <p>Want to search for an Apparel which you cant describe in text? Try our Image based search</p>
+                <h3 class="lorem">Parallel Apparel.</h3>
+                <div class="strip"></div>
+                <p>You may even like products which can help us serve you better recommendations</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends "nav.html" %}
+{% block content %}
+<!-- content-section-starts -->
+<div id="loading" class="container"><br/><h4 class="tag_head">Loading</h4><img style="width:100px; height:100px;" src="/static/images/loadingimage.gif" /></div>
+<div id="content">
+<div class="container" >
+    <div class="products-page">
+        <div class="products">
+
+
+            <div class="tags">
+                <h4 class="tag_head">Tags Widget</h4>
+                <ul class="tags_links">
+                    {% for i in tags %}
+                    <li><a href="#">{{ i }}</a></li>
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+        <div>
+            <div class="col-md-3 zoom-grid">
+                <div class="flexslider">
+
+
+                    <div class="thumb-image"><img src="{{ image }}" data-imagezoom="true" class="img-responsive"
+                                                  alt="hello"/></div>
+
+
+                </div>
+            </div>
+            <div class="col-md-5 dress-info">
+                <div class="dress-name">
+                    <span>₹459.00</span>
+
+                    <div class="span span1">
+                        <p class="left">Origin</p>
+                        <p class="right">India</p>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="span span2">
+                        <p class="left">Made In</p>
+                        <p class="right">India</p>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="span span3">
+                        <p class="left">Color</p>
+                        <p class="right" style="background-color:rgb{{ color }}; color:rgb{{ color }}; width=10px; height=5px;">......</p>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="span span4">
+                        <p class="left">SIZE</p>
+                        <p class="right"><span class="selection-box"><select class="domains valid" name="domains">
+										   <option>M</option>
+										   <option>L</option>
+										   <option>XL</option>
+										   <option>FS</option>
+										   <option>S</option>
+									   </select></span></p>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="purchase">
+                        <a href="#">Purchase Now</a>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a class="facebook1" href="#"></a></li>
+                                <li><a class="twitter1" href="#"></a></li>
+                                <li><a class="googleplus1" href="#"></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                    <script src="/static/js/imagezoom.js"></script>
+                    <!-- FlexSlider -->
+                    <script defer src="/static/js/jquery.flexslider.js"></script>
+
+                </div>
+
+        </div>
+    </div>
+
+
+
+        </div>
+            <!-- content-section-ends -->
+<div class="other-products">
+    <div class="container">
+        <h3 class="like text-center">More Like These</h3>
+        <ul id="flexiselDemo3">
+            {% for i in related_products %}
+            <li><a href="{{ url_for('showSingle',value=i) }}" onclick="loading();"><img src="{{ i }}" class="img-responsive" alt=""/></a>
+                <div class="product liked-product simpleCart_shelfItem">
+                    <a class="like_name" href="single.html">perfectly simple</a>
+                    <p><a class="item_add" href="#"><i></i> <span class=" item_price">₹759</span></a></p>
+                </div>
+            </li>
+                {% endfor %}
+        </ul>
+
+
+        <script type="text/javascript">
+					 $(window).load(function() {
+						$("#flexiselDemo3").flexisel({
+							visibleItems: 4,
+							animationSpeed: 1000,
+							autoPlay: true,
+							autoPlaySpeed: 3000,
+							pauseOnHover: true,
+							enableResponsiveBreakpoints: true,
+					    	responsiveBreakpoints: {
+					    		portrait: {
+					    			changePoint:480,
+					    			visibleItems: 1
+					    		},
+					    		landscape: {
+					    			changePoint:640,
+					    			visibleItems: 2
+					    		},
+					    		tablet: {
+					    			changePoint:768,
+					    			visibleItems: 3
+					    		}
+					    	}
+					    });
+
+					});
+
+        </script>
+        <script type="text/javascript" src="/static/js/jquery.flexisel.js"></script>
+            </div>
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+        }
+// ]]></script>
+    <link href="/static/css/loading.css" rel='stylesheet' type='text/css' />
+            <script src="/static/js/responsive-tabs.js"></script>
+            <script type="text/javascript">
+      $( '#myTab a' ).click( function ( e ) {
+        e.preventDefault();
+        $( this ).tab( 'show' );
+      } );
+
+      $( '#moreTabs a' ).click( function ( e ) {
+        e.preventDefault();
+        $( this ).tab( 'show' );
+      } );
+
+      ( function( $ ) {
+          // Test for making sure event are maintained
+          $( '.js-alert-test' ).click( function () {
+            alert( 'Button Clicked: Event was maintained' );
+          } );
+          fakewaffle.responsiveTabs( [ 'xs', 'sm' ] );
+      } )( jQuery );
+
+
+
+            </script>
+    </div>
+            {% endblock %}

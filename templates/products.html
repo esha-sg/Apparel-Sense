@@ -1,0 +1,216 @@
+{% extends "nav.html" %}
+{% block content %}
+
+<!-- content-section-starts -->
+<div id="loading" class="container"><br/><h4 class="tag_head">Loading</h4><img style="width:100px; height:100px;" src="/static/images/loadingimage.gif" /></div>
+<div id="content">
+<div class="container">
+    <div class="products-page">
+        <div class="products">
+
+
+                <form action="upload" method="post" enctype="multipart/form-data">
+                    <input class="cbp-vm-icon cbp-vm-add item_add" type="file" name="file" required><br/><br/>
+                    <input class="cbp-vm-icon cbp-vm-add item_add" type="submit" value="Upload">
+                </form>
+
+
+
+
+ <div class="tags">
+     <h2>Search Image</h2>
+                {% if filename %}
+
+                <img src="{{ url_for('send_file', filename=filename) }}" height="240" width="180">
+
+                {% endif %}
+                <h4 class="tag_head">Tags Widget</h4>
+                <ul class="tags_links">
+                    {% for i in pred %}
+                    <li><a href="#"> {{ i }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            </div>
+
+
+        </div>
+        <div class="new-product">
+            <div class="new-product-top">
+                <ul class="product-top-list">
+                    <li><a href="{{ url_for('home') }}">Home</a>&nbsp;<span>&gt;</span></li>
+                    <li><span class="act">Search Results</span>&nbsp;</li>
+                </ul>
+                <p class="back"><a href="{{ url_for('home') }}">Back to Previous</a></p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="mens-toolbar">
+                <div class="sort">
+                    <div class="sort-by">
+                        <label>Sort By</label>
+                        <select>
+                            <option value="">
+                                Position
+                            </option>
+                            <option value="">
+                                Name
+                            </option>
+                            <option value="">
+                                Price
+                            </option>
+                        </select>
+                        <a href=""><img src="/static/images/arrow2.gif" alt="" class="v-middle"></a>
+                    </div>
+                </div>
+                <ul class="women_pagenation">
+                    <li>Page:</li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                <div class="cbp-vm-options">
+                    <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid"
+                       title="grid">Grid View</a>
+                    <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list" title="list">List View</a>
+                </div>
+                <div class="pages">
+                    <div class="limiter visible-desktop">
+                        <label>Show</label>
+                        <select>
+                            <option value="" selected="selected">
+                                9
+                            </option>
+                            <option value="">
+                                15
+                            </option>
+                            <option value="">
+                                30
+                            </option>
+                        </select> per page
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <ul>
+
+                    {% for i in similar_images %}
+                    <li>
+                        <a class="cbp-vm-image" href="{{ url_for('showSingle', value = i) }}" onclick="loading();">
+                            <div class="simpleCart_shelfItem">
+                                <div class="view view-first">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="{{ i }}" class="img-responsive" alt=""/>
+                                            <div class="mask">
+                                                <div class="info">Quick View</div>
+                                            </div>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">perspiciatis</p>
+                                                </div>
+                                                <div class="pricey"><span class="item_price">₹259.00</span></div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </a>
+                        <div class="cbp-vm-details">
+                            Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut.
+                        </div>
+                        <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
+                        <!--<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Like</a> -->
+            </div>
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <script src="/static/js/cbpViewModeSwitch.js" type="text/javascript"></script>
+        <script src="/static/js/classie.js" type="text/javascript"></script>
+    </div>
+    <div class="clearfix"></div>
+
+<div class="clearfix"></div>
+
+<!-- content-section-ends -->
+<div class="other-products">
+    <div class="container">
+        <h3 class="like text-center">Featured Collection</h3>
+        <ul id="flexiselDemo3">
+            <li><a href="#"><img src="/static/images/l1.jpg" class="img-responsive"/></a>
+                <div class="product liked-product simpleCart_shelfItem">
+                    <a class="like_name" href="#">Perfectly simple</a>
+                    <p><a class="item_add" href="#"><i></i> <span class=" item_price">₹759</span></a></p>
+                </div>
+            </li>
+            <li><a href="#"><img src="/static/images/l2.jpg" class="img-responsive"/></a>
+                <div class="product liked-product simpleCart_shelfItem">
+                    <a class="like_name" href="#">Praising pain</a>
+                    <p><a class="item_add" href="#"><i></i> <span class=" item_price">₹699</span></a></p>
+                </div>
+            </li>
+            <li><a href="#"><img src="/static/images/l3.jpg" class="img-responsive"/></a>
+                <div class="product liked-product simpleCart_shelfItem">
+                    <a class="like_name" href="#">Neque porro</a>
+                    <p><a class="item_add" href="#"><i></i> <span class=" item_price">₹329</span></a></p>
+                </div>
+            </li>
+            <li><a href="#"><img src="/static/images/l4.jpg" class="img-responsive"/></a>
+                <div class="product liked-product simpleCart_shelfItem">
+                    <a class="like_name" href="#">Equal blame</a>
+                    <p><a class="item_add" href="#"><i></i> <span class=" item_price">₹499</span></a></p>
+                </div>
+            </li>
+            <li><a href="#"><img src="/static/images/l5.jpg" class="img-responsive"/></a>
+                <div class="product liked-product simpleCart_shelfItem">
+                    <a class="like_name" href="#">Perfectly simple</a>
+                    <p><a class="item_add" href="#"><i></i> <span class=" item_price">₹649</span></a></p>
+                </div>
+            </li>
+        </ul>
+        <script type="text/javascript">
+					 $(window).load(function() {
+						$("#flexiselDemo3").flexisel({
+							visibleItems: 4,
+							animationSpeed: 1000,
+							autoPlay: true,
+							autoPlaySpeed: 3000,
+							pauseOnHover: true,
+							enableResponsiveBreakpoints: true,
+					    	responsiveBreakpoints: {
+					    		portrait: {
+					    			changePoint:480,
+					    			visibleItems: 1
+					    		},
+					    		landscape: {
+					    			changePoint:640,
+					    			visibleItems: 2
+					    		},
+					    		tablet: {
+					    			changePoint:768,
+					    			visibleItems: 3
+					    		}
+					    	}
+					    });
+
+					});
+				   
+
+        </script>
+        <script type="text/javascript" src="/static/js/jquery.flexisel.js"></script>
+    </div>
+</div>
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+
+            $("#loading").show();
+            $("#content").hide();
+
+        }
+// ]]></script>
+    <link href="/static/css/loading.css" rel='stylesheet' type='text/css' />
+<!-- content-section-ends-here -->
+</div>
+{% endblock %}

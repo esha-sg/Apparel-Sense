@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apparel-Sense</title>
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- pace -->
+    <script src="/static/js/pace-min.js"></script>
+    <link href="/static/css/pace.css" rel="stylesheet" />
+    <script src="/static/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- Custom Theme files -->
+    <link href="/static/css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/static/css/component.css" rel='stylesheet' type='text/css' />
+    <style>
+        .blue{
+            background-color:black;
+            color:white;
+            padding: 8px 10px;
+            border-radius: 2px;
+            margin: 20px 0 0;
+            display: inline-block;
+            font-size: 13px;
+            }
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!--webfont-->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- cart -->
+    <script src="/static/js/simpleCart.min.js"></script>
+    <!-- cart -->
+    <link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="screen"/>
+</head>
+<body>
+<!-- header-section-starts -->
+<div class="header">
+    <div class="header-top-strip">
+        <div class="container">
+            <div class="header-top-left">
+                <ul>
+                    {% if not obj %}
+                    <li><a href="{{ url_for('showSignin') }}"><span class="glyphicon glyphicon-user"> </span>Login</a>
+                    </li>
+                    <li><a href="{{ url_for('showSignUp') }}"><span class="glyphicon glyphicon-lock"> </span>Create an
+                        Account</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-user"> </span>Logout</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="header-right">
+                <div class="cart box_1">
+                    <a href="#">
+                        <h3><span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity"
+                                                                                 class="simpleCart_quantity"> 0 </span>)<img
+                                src="/static/images/bag.png" alt=""></h3>
+                    </a>
+                    <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- header-section-ends -->
+<div class="banner-top">
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="logo">
+                    <h1><a href="{{ url_for('home') }}">Apparel-Sense</a></h1>
+                </div>
+            </div>
+            <!--/.navbar-header-->
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+
+                    <li><a href="{{ url_for('showProducts', name='tshirts') }}">Polo/Tees</a></li>
+                    <li><a href="{{ url_for('showProducts', name='pants') }}">Pants</a></li>
+                    <li><a href="{{ url_for('showProducts', name='saree') }}">Sarees</a></li>
+                    <li><a href="{{ url_for('showProducts', name='ladieskurta') }}">Ladies Kurtas</a></li>
+                    <li><a href="{{ url_for('showProducts', name='footwear') }}">Footwear</a></li>
+
+                    <li><a href="{{ url_for('index') }}">Search By Image</a></li>
+                    {% if obj %}
+                    <li><a href="{{ url_for('recommend') }}">{{ obj[1] }}</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+            <!--/.navbar-collapse-->
+        </nav>
+        <!--/.navbar-->
+    </div>
+</div>
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

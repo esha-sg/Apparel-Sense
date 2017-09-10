@@ -1,0 +1,78 @@
+<!doctype html>
+<head>
+    <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
+    <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
+</head>
+<style>
+    .b{
+    background-color: #f1f1f1;
+    color: black;
+    border: 2px solid #003366;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.b:hover {
+    background-color: #003366; /* Green */
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+    .sim{
+    float:left;
+    margin-left= 20px;
+    margin-right = 10px;
+    }
+
+
+</style>
+<body style="background-color:#f1f1f1">
+<title>A Class-apart</title>
+<div class="container">
+      <div class="header">
+      <h3 class="text-muted">Apparel Classifier ©</h3>
+      <hr/>
+      </div>
+    </div>
+      <div>
+      <form action="upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required><br /><br />
+        <input class="b" type="submit" value="Upload">
+      </form>
+      </div>
+
+{% if filename %}
+<table style="border-spacing: 40px; border-collapse: separate;">
+    <tr>
+        <td><img src="{{ url_for('send_file', filename=filename) }}" height="240" width="180"></td>
+        <td>{{ bar_chart.render()|safe }}</td>
+        <td><h4 style="color:rgb{{ obj[2] }}">I am {{ obj[0] }}% sure that this is a {{ obj[1] }} :)</h4></td>
+    </tr>
+</table>
+
+    <h3>Some similar {{ obj[1] }}s from our Database</h3>
+<hr/>
+<table style="border-spacing: 30px;">
+    <tr>
+        <td><img class="sim" src="/static/10.jpg"/></td>
+        <td><img class="sim" src="/static/11.jpg"/></td>
+        <td><img class="sim" src="/static/12.jpg"/></td>
+        <td><img class="sim" src="/static/13.jpg"/></td>
+        <td><img class="sim" src="/static/14.jpg"/></td>
+    </tr>
+</table>
+
+
+
+
+{% else %}
+  <h1>no image for whatever reason</h1>
+{% endif %}
+
+</body>
+</html>
